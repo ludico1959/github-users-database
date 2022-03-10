@@ -1,29 +1,27 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 import { randomUUID } from 'crypto';
 
-@Entity('clients')
-export class User {
+@Entity('repositories')
+export class Repository {
   constructor() {
     this.id = randomUUID();
   }
 
   @PrimaryColumn()
-  id: string;
+  id!: string;
 
   @Column()
-  login: string;
+  node_id: string;
 
   @Column()
-  avatar_url: string;
+  name: string;
+
+  @Column()
+  full_name: string;
+
+  @Column()
+  description: string;
 
   @Column()
   html_url: string;
-
-  @Column()
-  organizations_url: string;
-
-  @Column()
-  repos_url: string;
-
-  age: number;
 }
