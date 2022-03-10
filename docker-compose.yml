@@ -1,5 +1,5 @@
 # Use root/example as user/password credentials
-version: '3.1'
+version: '3.7'
 
 services:
   db:
@@ -9,10 +9,12 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: compasso1995
-
-  adminer:
-    image: adminer
-    container_name: adminer
-    restart: always
     ports:
-      - 8080:8080
+      - 3306:3306
+
+  # adminer:
+  #   image: adminer
+  #   container_name: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
