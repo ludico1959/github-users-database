@@ -12,10 +12,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root',
       password: 'compasso1995',
       database: 'db_github_users',
-      entities: [
-        'dist/modules/content/infra/typeorm/entities/*.entity{.ts,.js}',
-      ],
-      synchronize: true,
+      entities: ['src/modules/content/infra/typeorm/entities/*.ts'],
+      migrations: ['src/shared/database/migrations*.ts'],
+      cli: {
+        entitiesDir: 'src/modules/content/infra/typeorm/entities',
+        migrationsDir: 'src/shared/database/migrations',
+      },
     }),
   ],
   controllers: [AppController],
