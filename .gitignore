@@ -36,3 +36,6 @@ lerna-debug.log*
 
 # Documents
 instructions.pdf
+
+# Env variables
+.env
