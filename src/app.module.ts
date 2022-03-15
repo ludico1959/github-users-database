@@ -13,7 +13,7 @@ import { UserService } from './modules/user/infra/usecases/user.service';
       password: 'compasso1995',
       database: 'db_github_users',
       entities: ['dist/modules/user/infra/typeorm/entities/*.js'],
-      migrations: ['dist/shared/database/migrations/*.ts'],
+      migrations: ['dist/shared/database/migrations/*.js'],
       cli: {
         entitiesDir: 'dist/modules/user/infra/typeorm/entities',
         migrationsDir: 'dist/shared/database/migrations',
