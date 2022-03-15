@@ -1,17 +1,22 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { UserRepository } from '../repositories/users.repository';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import User from '../../interface/user.interface';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
+  ) {}
 
   findUserByLogin(login: string) {
-    const user = this.userRepository.findUserByLogin(login);
+    const user = this.usersRepository.findOne(login);
 
     if (user) {
       return user;
     } else {
-      const addedUser = this.userRepository.addUser(login);
+      const addedUser = this.usersRepository.create();
 
       if (!addedUser)
         throw new HttpException('User not found', HttpStatus.NOT_FOUND);

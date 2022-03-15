@@ -1,16 +1,16 @@
 import {
   Entity,
   Column,
-  PrimaryColumn,
   OneToOne,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { randomUUID } from 'crypto';
-import { Repository } from './Repository';
+import { Repository } from './repository.entity';
 
-@Entity('users')
+@Entity()
 export class User {
   constructor() {
     this.id = randomUUID();
@@ -19,7 +19,7 @@ export class User {
   @Column()
   login: string;
 
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column()
