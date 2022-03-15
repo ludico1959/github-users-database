@@ -39,3 +39,4 @@ instructions.pdf
 
 # Env variables
 .env
+docker.env

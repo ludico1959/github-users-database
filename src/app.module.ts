@@ -1,24 +1,21 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './modules/user/user.module';
+import { ConfigModule } from '@nestjs/config';
+import * as Joi from '@hapi/joi';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'compasso1995',
-      database: 'db_github_users',
-      entities: ['dist/modules/user/infra/typeorm/entities/*.js'],
-      migrations: ['dist/shared/database/migrations/*.js'],
-      cli: {
-        entitiesDir: 'dist/modules/user/infra/typeorm/entities',
-        migrationsDir: 'dist/shared/database/migrations',
-      },
-    }),
     UsersModule,
+    ConfigModule.forRoot({
+      validationSchema: Joi.object({
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.number().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_DB: Joi.string().required(),
+        PORT: Joi.number(),
+      }),
+    }),
   ],
   controllers: [],
   providers: [],
