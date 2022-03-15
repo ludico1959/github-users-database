@@ -1,4 +1,4 @@
-export interface Post {
+export class CreateUserDto {
   login: string;
   id: string;
   node_id: string;

@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserController } from './modules/user/infra/controllers/user.controller';
-import { UserService } from './modules/user/infra/usecases/user.service';
+import { UsersModule } from './modules/user/user.module';
 
 @Module({
   imports: [
@@ -19,8 +18,9 @@ import { UserService } from './modules/user/infra/usecases/user.service';
         migrationsDir: 'dist/shared/database/migrations',
       },
     }),
+    UsersModule,
   ],
-  controllers: [UserController],
-  providers: [UserService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
