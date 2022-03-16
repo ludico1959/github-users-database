@@ -1,13 +1,13 @@
 import { Controller, Get, HttpCode, Param } from '@nestjs/common';
-import { UserService } from '../usecases/users.service';
+import { UsersService } from '../usecases/users.service';
 
 @Controller('/api/v1/users/')
-export class UserController {
-  constructor(private readonly userService: UserService) {}
+export class UsersController {
+  constructor(private readonly userService: UsersService) {}
 
   @Get(':login')
   @HttpCode(200)
-  findUserByLogin(@Param('login') login: string) {
-    return this.userService.findUserByLogin(login);
+  findByLogin(@Param('login') login: string) {
+    return this.userService.findByLogin(login);
   }
 }
