@@ -7,7 +7,7 @@ export class UsersController {
 
   @Get(':login')
   @HttpCode(200)
-  findByLogin(@Param('login') login: string) {
-    return this.userService.findByLogin(login);
+  getUserByUsername(@Param('login') login: string): any {
+    return this.userService.getUserByUsername(login);
   }
 }

@@ -7,20 +7,15 @@ import {
   UpdateDateColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { randomUUID } from 'crypto';
 import { Repository } from './repository.entity';
 
 @Entity()
 export class User {
-  constructor() {
-    this.id = randomUUID();
-  }
-
   @Column()
   login: string;
 
-  @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  @PrimaryGeneratedColumn()
+  id: string;
 
   @Column()
   node_id: string;

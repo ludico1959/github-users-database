@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { map } from 'rxjs';
 import { Repository } from 'typeorm';
@@ -14,19 +14,10 @@ export class UsersService {
     private readonly httpService: HttpService,
   ) {}
 
-  findByLogin(login: string) {
+  async getUserByUsername(username: string): Promise<any> {
     const githubAPI = process.env.GITHUB_API;
     return this.httpService
-      .get(`${githubAPI}/users/${login}`)
+      .get(`${githubAPI}/users/${username}`)
       .pipe(map((response) => response.data));
-
-    // if (user) {
-    //   return user;
-    // } else {
-    //   const addedUser = this.usersRepository.create();
-
-    //   if (!addedUser)
-    //     throw new HttpException('User not found', HttpStatus.NOT_FOUND);
-    // }
   }
 }
