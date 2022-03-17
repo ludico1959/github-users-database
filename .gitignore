@@ -40,3 +40,7 @@ instructions.pdf
 # Env variables
 .env
 docker.env
+
+# ORM Config
+ormconfig.json
+ormconfig.ts
