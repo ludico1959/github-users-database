@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('repository')
 export class Repository {
   @PrimaryGeneratedColumn()
   id!: string;

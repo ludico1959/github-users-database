@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { Repository } from './repository.entity';
 
-@Entity()
+@Entity('user')
 export class User {
   @Column()
   login: string;
