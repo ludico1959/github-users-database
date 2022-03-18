@@ -1,53 +1,41 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateUsers1647003702491 implements MigrationInterface {
+export class UserMigration1647621173783 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
         name: 'users',
         columns: [
           {
-            name: 'login',
-            type: 'string',
-          },
-          {
             name: 'id',
-            type: 'uuid',
+            type: 'string',
             isPrimary: true,
           },
           {
-            name: 'name',
-            type: 'string',
+            name: 'login',
+            type: 'varchar',
+          },
+          {
+            name: 'node_id',
+            type: 'varchar',
           },
           {
             name: 'html_url',
-            type: 'string',
+            type: 'varchar',
           },
           {
-            name: 'repo_url',
-            type: 'string',
-          },
-          {
-            name: 'updated_at',
+            name: 'update_at',
             type: 'Date',
           },
           {
             name: 'created_at',
             type: 'Date',
           },
-          {
-            name: 'email',
-            type: 'string',
-          },
-          {
-            name: 'repositoryId',
-            type: 'uuid',
-          },
         ],
         foreignKeys: [
           {
             name: 'fk_user_repository',
-            columnNames: ['repositoryId'],
+            columnNames: ['repository_Id'],
             referencedTableName: 'repositories',
             referencedColumnNames: ['id'],
           },
