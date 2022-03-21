@@ -1,15 +1,13 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable } from '@nestjs/common';
 import { map } from 'rxjs';
-import { Repository } from 'typeorm';
-import User from '../../interface/user.interface';
+import { IUserRepository } from '../../repositories/IUserRepository';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    @Inject('UserRepository')
+    private readonly usersRepository: IUserRepository,
 
     private readonly httpService: HttpService,
   ) {}

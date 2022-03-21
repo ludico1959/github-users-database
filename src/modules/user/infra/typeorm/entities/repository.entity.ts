@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { User } from './user.entity';
 
 @Entity('repository')
 export class Repository {
@@ -19,4 +26,13 @@ export class Repository {
 
   @Column()
   html_url: string;
+
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User, (user) => user.repository)
+  @JoinColumn({
+    name: 'user_id',
+  })
+  user: User;
 }

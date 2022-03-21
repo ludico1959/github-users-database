@@ -1,11 +1,10 @@
 import {
   Entity,
   Column,
-  OneToOne,
-  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 import { Repository } from './repository.entity';
 
@@ -45,7 +44,6 @@ export class User {
   @Column()
   email: string;
 
-  @OneToOne(() => Repository)
-  @JoinColumn()
+  @OneToMany(() => Repository, (repository) => repository.user)
   repository: Repository;
 }

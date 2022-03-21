@@ -1,5 +1,10 @@
-export default class UserDTO {
+import { IsString, IsNotEmpty } from 'class-validator';
+
+export default class CreateUserDTO {
+  @IsString()
+  @IsNotEmpty()
   login: string;
+
   id: string;
   node_id: string;
   name: string;
