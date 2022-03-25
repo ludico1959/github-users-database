@@ -3,8 +3,8 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  PrimaryGeneratedColumn,
   OneToMany,
+  PrimaryColumn,
 } from 'typeorm';
 import { Repository } from './repository.entity';
 
@@ -13,7 +13,7 @@ export class User {
   @Column()
   login: string;
 
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: string;
 
   @Column()

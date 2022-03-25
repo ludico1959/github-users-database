@@ -1,6 +1,12 @@
-import { IsString, IsNotEmpty, IsDate, IsArray } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsDate,
+  IsArray,
+  IsEmail,
+} from 'class-validator';
 
-export default class CreateUserDTO {
+class CreateUserDTO {
   @IsString()
   @IsNotEmpty()
   login: string;
@@ -35,9 +41,12 @@ export default class CreateUserDTO {
 
   @IsString()
   @IsNotEmpty()
+  @IsEmail()
   email: string;
 
   @IsArray()
   @IsNotEmpty()
   repos: Array<string>;
 }
+
+export { CreateUserDTO };
